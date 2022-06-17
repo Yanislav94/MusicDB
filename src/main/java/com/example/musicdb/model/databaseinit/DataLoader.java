@@ -1,10 +1,10 @@
 package com.example.musicdb.model.databaseinit;
-
 import com.example.musicdb.model.service.ArtistService;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
-public class DataLoader implements ApplicationRunner {
+@Component
+public class DataLoader implements CommandLineRunner {
 
     private final ArtistService artistService;
 
@@ -14,9 +14,7 @@ public class DataLoader implements ApplicationRunner {
 
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
-
+    public void run(String... args) throws Exception {
         artistService.initArtists();
-
     }
 }
