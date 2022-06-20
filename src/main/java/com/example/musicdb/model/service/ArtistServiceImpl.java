@@ -25,8 +25,11 @@ public class ArtistServiceImpl implements ArtistService {
     public void initArtists() {
         if (this.artistRepository.count() == 0) {
             Arrays.stream(BandEnum.values()).forEach(bandEnum -> {
-                this.artistRepository.save(new Artist(bandEnum.toString(), ""));
+                this.artistRepository.save(new Artist("Ivan", "Petar"));
             });
         }
+        Artist artist = new Artist("artist", "zako stava taka");
+        artistRepository.save(artist);
+        artistRepository.save(new Artist("Wtf", "kostaatukae"));
     }
 }

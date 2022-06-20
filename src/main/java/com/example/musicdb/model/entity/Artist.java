@@ -6,13 +6,18 @@ import javax.persistence.*;
 @Table(name = "artists")
 public class Artist extends BaseEntity {
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private BandEnum name;
     @Column(columnDefinition = "TEXT")
     private String careerInformation;
 
     public Artist(String name, String careerInformation) {
     }
+
+    public Artist() {
+
+    }
+
 
 
     public BandEnum getBandEnum() {
