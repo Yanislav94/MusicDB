@@ -1,6 +1,5 @@
 package com.example.musicdb.model.databaseinit;
-import com.example.musicdb.model.entity.BandEnum;
-import com.example.musicdb.model.service.ArtistService;
+import com.example.musicdb.service.ArtistService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

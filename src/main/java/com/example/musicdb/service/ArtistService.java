@@ -1,4 +1,4 @@
-package com.example.musicdb.model.service;
+package com.example.musicdb.service;
 
 import org.springframework.stereotype.Service;
 

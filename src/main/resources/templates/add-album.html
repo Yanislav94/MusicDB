@@ -1,41 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>My Music DB Application</title>
-    <link rel="stylesheet" href="/css/reset-css.css"/>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/css/style.css"/>
+    <th:block th:include="~{/fragments/head}"></th:block>
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg bg-nav rounded">
-        <a class="nav-link" href="/">
-            <img src="/img/headphones.png" width="40px" alt="HeadPhones picture">
-        </a>
-        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-            <ul class="navbar-nav row">
-                <li class="nav-item col-md-4">
-                    <a class="nav-link text-white active h5" href="/">Login</a>
-                </li>
-                <li class="nav-item col-md-4">
-                    <a class="nav-link text-white active h5" href="/">Register</a>
-                </li>
-                <li class="nav-item col-md-4">
-                    <a class="nav-link text-white active h5" href="/">Add Album</a>
-                </li>
-                <li class="nav-item col-md-4">
-                    <a class="nav-link text-white active h5" href="/">Logout</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <th:block th:include="~{/fragments/nav}"></th:block>
 </header>
 <main class="p-5 bg-blur text-center my-main">
     <h1 class="text-light border-bottom">Add Album</h1>
     <div class="d-flex justify-content-center">
-        <form action="/" method="POST"
+        <form th:action="@{/items/add}" method="POST"
               class="text-light">
             <div class="form-row m-5">
                 <div class="col">
@@ -79,14 +54,18 @@
                 <div class="col">
                     <label for="artist">Artist</label>
                     <select name="artist" id="artist" class="custom-select">
-                        <option value="" selected>Select Artist</option>
+                        <option value="">Select Artist</option>
+                        <option th:each="o : ${T(com.example.musicdb.model.entity.BandEnum).values()}"
+                               th:text="${o}" th:value="${o}">Select Artist</option>
                     </select>
                     <small id="artistError" class="form-text bg-danger rounded">You must select artist</small>
                 </div>
                 <div class="col">
                     <label for="genre">Genre</label>
                     <select name="genre" id="genre" class="custom-select">
-                        <option value="" selected>Select genre</option>
+                        <option value="Genre" selected>Select genre</option>
+                        <option th:each="o : ${T(com.example.musicdb.model.entity.GenreEum).values()}"
+                               th:text="${o}" th:value="${o}" >Select genre</option>
                     </select>
                     <small id="genreError" class="form-text bg-danger rounded">You must select genre</small>
                 </div>
@@ -106,11 +85,7 @@
     </div>
 </main>
 <footer class="footer bg-blur">
-    <div class="container-fluid text-center">
-        <div class="h5 text-white">
-            &copy;SoftUni Spring Team 2021. All rights reserved.
-        </div>
-    </div>
+    <th:block th:include="~{/fragments/footer}"></th:block>
 </footer>
 </body>
 </html>
