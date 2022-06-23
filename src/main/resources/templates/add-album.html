@@ -10,7 +10,7 @@
 <main class="p-5 bg-blur text-center my-main">
     <h1 class="text-light border-bottom">Add Album</h1>
     <div class="d-flex justify-content-center">
-        <form th:action="@{/items/add}" method="POST"
+        <form th:action="@{/albums/add}" method="POST"
               class="text-light">
             <div class="form-row m-5">
                 <div class="col">
@@ -55,7 +55,7 @@
                     <label for="artist">Artist</label>
                     <select name="artist" id="artist" class="custom-select">
                         <option value="">Select Artist</option>
-                        <option th:each="o : ${T(com.example.musicdb.model.entity.BandEnum).values()}"
+                        <option th:each="o : ${T(musicdb.model.entity.BandEnum).values()}"
                                th:text="${o}" th:value="${o}">Select Artist</option>
                     </select>
                     <small id="artistError" class="form-text bg-danger rounded">You must select artist</small>
@@ -64,7 +64,7 @@
                     <label for="genre">Genre</label>
                     <select name="genre" id="genre" class="custom-select">
                         <option value="Genre" selected>Select genre</option>
-                        <option th:each="o : ${T(com.example.musicdb.model.entity.GenreEum).values()}"
+                        <option th:each="o : ${T(musicdb.model.entity.GenreEum).values()}"
                                th:text="${o}" th:value="${o}" >Select genre</option>
                     </select>
                     <small id="genreError" class="form-text bg-danger rounded">You must select genre</small>
