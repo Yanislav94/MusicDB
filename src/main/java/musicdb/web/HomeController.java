@@ -1,14 +1,13 @@
 package musicdb.web;
 
-import musicdb.model.entity.User;
+import musicdb.model.service.AlbumServiceModel;
+import musicdb.model.view.AlbumViewModel;
 import musicdb.service.AlbumService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
-import java.util.Optional;
+import java.util.List;
 
 
 @Controller
@@ -22,13 +21,13 @@ public class HomeController {
 
     @GetMapping("/")
     public ModelAndView index(HttpSession httpSession, ModelAndView modelAndView) {
-        modelAndView.setViewName("home");
-        modelAndView.addObject("albums", "vankoethebest");
-//        if (httpSession.getAttribute("user") == null) {
-//            modelAndView.setViewName("index");
-//        } else {
-//
-//        }
+
+        if (httpSession.getAttribute("user") == null) {
+            modelAndView.setViewName("index");
+        } else {
+            modelAndView.addObject("albums", this.albumService.findAllItems());
+            modelAndView.setViewName("home");
+        }
 
         return modelAndView;
     }

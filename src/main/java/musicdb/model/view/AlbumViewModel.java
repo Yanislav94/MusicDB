@@ -13,10 +13,11 @@ import java.util.Date;
 @ConstructorBinding
 public class AlbumViewModel {
 
-    private String name;
-    private String artist;
-    private GenreEum genre;
-    private BigDecimal price;
-    private String imgUrl;
-    private Date releaseDate;
+    public String name;
+    public String artist;
+    public GenreEum genre;
+    public BigDecimal price;
+    public String imgUrl;
+    public Date releaseDate;
+
 }

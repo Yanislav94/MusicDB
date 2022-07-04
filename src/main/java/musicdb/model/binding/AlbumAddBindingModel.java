@@ -24,7 +24,6 @@ public class AlbumAddBindingModel {
     private BigDecimal price;
     @Min(value = 10)
     private int copies;
-    @NotNull
     private String producer;
     private BandEnum artist;
     private GenreEum genre;

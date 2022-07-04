@@ -39,13 +39,17 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public List<AlbumViewModel> findAllItems() {
-        return this.albumRepository.findAll().stream().map(album -> {
-            AlbumViewModel albumViewModel = this.modelMapper
-                    .map(album, AlbumViewModel.class);
-            albumViewModel.setImgUrl(String.format("/image/%s.jpg", album.getArtist()
-                    .getBandEnum().name()
-                    .toLowerCase(Locale.ROOT)));
-            return albumViewModel;
-        }).collect(Collectors.toList());
+        List<AlbumViewModel> asd = this.albumRepository
+                .findAll()
+                .stream()
+                .map(album -> {
+                    AlbumViewModel albumViewModel = this.modelMapper
+                            .map(album, AlbumViewModel.class);
+                    ;
+                    return albumViewModel;
+                }).toList();
+
+
+        return asd;
     }
 }

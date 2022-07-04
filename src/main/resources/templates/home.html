@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:include="~{/fragments/head}"></th:block>
@@ -11,17 +11,17 @@
     <h2 class="text-light border-bottom">Total sold copies
         of all albums: 10000</h2>
     <div class="row">
-        <div th:text="${albums}" class="col-md-3">
-            <div class="card mb-4 box-shadow">
-                <img src="/static/img/metallica.jpg" class="card-img-top" alt="Thumbnail [100%x225]"
+        <div class="col-md-3">
+            <div th:each="а: ${albums}" th:object="${a}" class="card mb-4 box-shadow">
+                <img src="img/metallica.jpg" class="card-img-top" alt="Thumbnail [100%x225]"
                      data-holder-rendered="true"
                      style="height: 225px; width: 100%; display: block;">
                 <div class="card-body">
                     <div class="text-center">
-                        <p class="card-text border-bottom ">Name: Name of album</p>
-                        <p class="card-text border-bottom ">Artist: Metallica</p>
-                        <p class="card-text border-bottom ">Genre: Metal</p>
-                        <p class="card-text border-bottom ">Price: 19.99</p>
+                        <p class="card-text border-bottom "th:text="*{name}"></p>
+                        <p class="card-text border-bottom ">Artist: Artist</p>
+                        <p class="card-text border-bottom ">Genre: Genre"</p>
+                        <p class="card-text border-bottom ">"Price: rice"</p>
                         <p class="card-text border-bottom">Release Date: </p>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
