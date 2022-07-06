@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.Date;
 
 @Entity
@@ -21,8 +22,7 @@ public class Album extends BaseEntity{
     @Column
     private BigDecimal price;
     @Column
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private Date releaseDate;
+    private Instant releaseDate;
     @Column
     private String producer;
     @Enumerated
@@ -34,6 +34,7 @@ public class Album extends BaseEntity{
 
     public Album() {
     }
+
 
     public String getName() {
         return name;
@@ -75,11 +76,11 @@ public class Album extends BaseEntity{
         this.price = price;
     }
 
-    public Date getReleaseDate() {
+    public Instant getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(Instant releaseDate) {
         this.releaseDate = releaseDate;
     }
 

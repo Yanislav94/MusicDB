@@ -1,15 +1,19 @@
 package musicdb.service;
 
 import musicdb.model.entity.Album;
+import musicdb.model.entity.Artist;
+import musicdb.model.entity.BandEnum;
+import musicdb.model.entity.GenreEum;
 import musicdb.model.repository.AlbumRepository;
+import musicdb.model.repository.ArtistRepository;
 import musicdb.model.service.AlbumServiceModel;
 import musicdb.model.view.AlbumViewModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
 
 @Service
 public class AlbumServiceImpl implements AlbumService {
@@ -17,11 +21,13 @@ public class AlbumServiceImpl implements AlbumService {
     private final AlbumRepository albumRepository;
     private final ModelMapper modelMapper;
     private final ArtistService artistService;
+    private final ArtistRepository artistRepository;
 
-    public AlbumServiceImpl(AlbumRepository albumRepository, ModelMapper modelMapper, ArtistService artistService) {
+    public AlbumServiceImpl(AlbumRepository albumRepository, ModelMapper modelMapper, ArtistService artistService, ArtistRepository artistRepository) {
         this.albumRepository = albumRepository;
         this.modelMapper = modelMapper;
         this.artistService = artistService;
+        this.artistRepository = artistRepository;
     }
 
 
@@ -52,4 +58,5 @@ public class AlbumServiceImpl implements AlbumService {
 
         return asd;
     }
+
 }

@@ -14,6 +14,7 @@ public class Artist extends BaseEntity {
     public Artist() {
     }
 
+
     public Artist(BandEnum name, String careerInformation) {
         this.name = name;
         this.careerInformation = careerInformation;

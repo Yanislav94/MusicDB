@@ -12,13 +12,13 @@
         of all albums: 10000</h2>
     <div class="row">
         <div class="col-md-3">
-            <div th:each="а: ${albums}" th:object="${a}" class="card mb-4 box-shadow">
+            <div class="card mb-4 box-shadow">
                 <img src="img/metallica.jpg" class="card-img-top" alt="Thumbnail [100%x225]"
                      data-holder-rendered="true"
                      style="height: 225px; width: 100%; display: block;">
                 <div class="card-body">
-                    <div class="text-center">
-                        <p class="card-text border-bottom "th:text="*{name}"></p>
+                    <div th:each="student: ${albums}" class="text-center">
+                        <p class="card-text border-bottom " th:text="${student.name}">Album: Name</p>
                         <p class="card-text border-bottom ">Artist: Artist</p>
                         <p class="card-text border-bottom ">Genre: Genre"</p>
                         <p class="card-text border-bottom ">"Price: rice"</p>
