@@ -31,4 +31,9 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.findByUsername(username).
                 map(user -> this.modelMapper.map(user, UserServiceModel.class)).orElse(null);
     }
+
+    @Override
+    public void initUser() {
+        this.userRepository.save(new User("qnko", "12345"));
+    }
 }

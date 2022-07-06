@@ -5,6 +5,7 @@ import musicdb.model.service.AlbumServiceModel;
 import musicdb.service.AlbumService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,7 +28,10 @@ public class AlbumsController {
     }
 
     @GetMapping("/add")
-    public String add() {
+    public String add(Model model) {
+        if(!model.containsAttribute("albumAddBindingModel")) {
+            model.addAttribute("albumAddBindingModel", new AlbumAddBindingModel());
+        }
         return "add-album";
     }
 
@@ -37,6 +41,8 @@ public class AlbumsController {
                              BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("albumAddBindingModel", albumAddBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.albumAddBindingModel", bindingResult);
             return "redirect:add";
         }
         this.albumService.addAlbum(this.modelMapper.map(albumAddBindingModel, AlbumServiceModel.class));

@@ -2,14 +2,13 @@ package musicdb.service;
 
 import musicdb.model.entity.Album;
 import musicdb.model.repository.AlbumRepository;
+import musicdb.model.repository.ArtistRepository;
 import musicdb.model.service.AlbumServiceModel;
 import musicdb.model.view.AlbumViewModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
 
 @Service
 public class AlbumServiceImpl implements AlbumService {
@@ -17,6 +16,7 @@ public class AlbumServiceImpl implements AlbumService {
     private final AlbumRepository albumRepository;
     private final ModelMapper modelMapper;
     private final ArtistService artistService;
+
 
     public AlbumServiceImpl(AlbumRepository albumRepository, ModelMapper modelMapper, ArtistService artistService) {
         this.albumRepository = albumRepository;
@@ -28,13 +28,10 @@ public class AlbumServiceImpl implements AlbumService {
     @Override
     public void addAlbum(AlbumServiceModel albumServiceModel) {
 
-
         Album album = this.modelMapper.map(albumServiceModel, Album.class);
-
-        album.setArtist(this.artistService.findByAlbumName(albumServiceModel.getArtist().getArtist()));
-
+        album.setArtist(this.artistService.findByAlbumName(albumServiceModel.getArtist()));
         this.albumRepository.saveAndFlush(album);
-        System.out.println("");
+
     }
 
     @Override
@@ -47,9 +44,11 @@ public class AlbumServiceImpl implements AlbumService {
                             .map(album, AlbumViewModel.class);
                     ;
                     return albumViewModel;
+
                 }).toList();
 
 
         return asd;
     }
+
 }

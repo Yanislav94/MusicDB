@@ -8,16 +8,21 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    @Column(name = "username", nullable = false, unique = true)
+    @Column(name = "username", nullable = true, unique = true)
     private String username;
-    @Column(name = "fullname", nullable = false)
+    @Column(name = "fullname", nullable = true)
     private String fullName;
-    @Column(name = "password", nullable = false)
+    @Column(name = "password", nullable = true)
     private String password;
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email", nullable = true, unique = true)
     private String email;
 
     public User() {
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public String getUsername() {

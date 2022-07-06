@@ -1,8 +1,8 @@
 package musicdb.model.service;
 
-import musicdb.model.entity.BandEnum;
 import lombok.Getter;
 import lombok.Setter;
+import musicdb.model.entity.BandEnum;
 import org.springframework.boot.context.properties.ConstructorBinding;
 
 @Getter
@@ -10,7 +10,7 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 @ConstructorBinding
 public class ArtistServiceModel {
 
-    private BandEnum artist;
-    private String careerInformation;
+    public BandEnum name;
+    public String careerInformation;
 
 }

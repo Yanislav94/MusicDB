@@ -1,21 +1,26 @@
 package musicdb.model.service;
 
+import lombok.NoArgsConstructor;
+import musicdb.model.entity.BandEnum;
 import musicdb.model.entity.GenreEum;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.boot.context.properties.ConstructorBinding;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
-@Getter @Setter @ConstructorBinding
+@Getter @Setter @NoArgsConstructor
 public class AlbumServiceModel extends BaseServiceModel{
 
-    private String name;
-    private String imgUrl;
-    private BigDecimal price;
-    private int copies;
-    private String producer;
-    private ArtistServiceModel artist;
-    private GenreEum genre;
-
+    public String name;
+    public String imgUrl;
+    public BigDecimal price;
+    public int copies;
+    public String producer;
+    public BandEnum artist;
+    public GenreEum genre;
+    @DateTimeFormat(pattern = "dd-MM-YYYY")
+    public Date releaseDate;
+    private String description;
 }

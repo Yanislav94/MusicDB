@@ -1,23 +1,23 @@
 package musicdb.model.binding;
 
+import lombok.NoArgsConstructor;
 import musicdb.model.entity.BandEnum;
 import musicdb.model.entity.GenreEum;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.boot.context.properties.ConstructorBinding;
-
+import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Getter
 @Setter
-@ConstructorBinding
+@NoArgsConstructor
 public class AlbumAddBindingModel {
 
     @Length(min = 3, max = 20)
-    private String name;
+    public String name;
     @Length(min = 2)
     private String imgUrl;
     @Min(value = 0)
@@ -27,4 +27,7 @@ public class AlbumAddBindingModel {
     private String producer;
     private BandEnum artist;
     private GenreEum genre;
+    private String description;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date releaseDate;
 }
