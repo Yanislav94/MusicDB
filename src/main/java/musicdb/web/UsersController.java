@@ -6,6 +6,7 @@ import musicdb.model.service.UserServiceModel;
 import musicdb.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,7 +30,10 @@ public class UsersController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        if (!model.containsAttribute("userLoginBindingModel")) {
+            model.addAttribute("userLoginBindingModel", new UserLoginBindingModel());
+        }
         return "login";
     }
 
@@ -40,7 +44,10 @@ public class UsersController {
                                RedirectAttributes redirectAttributes, HttpSession httpSession) {
 
         if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
             return "redirect:login";
+
         }
 
         UserServiceModel user = this.userService.findByUsername(userLoginBindingModel.getUsername());
